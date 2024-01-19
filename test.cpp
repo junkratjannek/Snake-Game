@@ -59,5 +59,79 @@ int main() {
     std::string greeting = "Hello"; // heißt, dass es daraus entnommen wird 
     std::cout << greeting;
 
+    int time = 20;
+    string result = (time < 18) ? "Good day." : "Good evening.";
+    cout << result;
+
+    string cars[4] = {"Opel", "BMW", "Mercedes", "Porsche"};
+    cars[0] = "Audi"; 
+    int lengthOfArray = sizeof(cars) / sizeof(int); 
+    for (int i = 0; i < lengthOfArray - 1; i++)
+    {
+        cout << cars[i]; 
+    }
+    
+    string food = "Pizza";  // food variable
+    string &meal = food;    // reference to food
+
+    string food = "Pizza";
+    cout << &food; // Outputs 0x6dfed4
+
+    string food = "Pizza";  // A food variable of type string
+    string* ptr = &food;    // A pointer variable, with the name ptr, that stores the address of food
+    newMain(); 
     return 0; 
 }
+
+void myFunction(string fname, int age) {
+  cout << fname << " Refsnes. " << age << " years old. \n";
+}
+
+int newMain(){
+    myFunction("Liam", 3);
+    myFunction("Jenny", 14);
+    myFunction("Anja", 30);
+    return 0;
+}
+
+int plusFunc(int x, int y) {
+  return x + y;
+}
+
+double plusFunc(double x, double y) {
+  return x + y;
+}
+
+int main() {
+  int myNum1 = plusFunc(8, 5);
+  double myNum2 = plusFunc(4.3, 6.26);
+  cout << "Int: " << myNum1 << "\n";
+  cout << "Double: " << myNum2;
+  return 0;
+}
+
+class MyClass {
+    public: 
+    int myNum; 
+    void functionMethod(){
+        cout << 15; 
+    }
+    MyClass(){
+        cout << "Hello World"; //Constructor
+    }
+};
+
+int functionToTestClass(){
+    MyClass myObject; 
+    myObject.myNum = 1; 
+    cout << myObject.myNum; 
+    myObject.functionMethod(); 
+    MyClass myObject; 
+    return 0; 
+}
+
+/* Access Specifier: 
+public - members are accessible from outside the class
+private - members cannot be accessed (or viewed) from outside the class
+protected - members cannot be accessed from outside the class, however, they can be accessed in inherited classes. You will learn more
+*/
