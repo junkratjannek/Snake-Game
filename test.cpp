@@ -1,5 +1,7 @@
 #include <iostream> 
 using namespace std; 
+#include <string> 
+#include <iterator>
 
 namespace myNameSpace {
     int zahl = 10; 
@@ -20,12 +22,12 @@ int main() {
     cout << "Your number is: " << a; // Display the input value
 
     // Data Types
-    int myNum = 5;               // Integer (whole number)
-    float myFloatNum = 5.99;     // Floating point number
-    double myDoubleNum = 9.98;   // Floating point number
-    char myLetter = 'D';         // Character
-    bool myBoolean = true;       // Boolean
-    string myText = "Hello";     // String
+    // int myNum = 5;               // Integer (whole number)
+    // float myFloatNum = 5.99;     // Floating point number
+    // double myDoubleNum = 9.98;   // Floating point number
+    // char myLetter = 'D';         // Character
+    // bool myBoolean = true;       // Boolean
+    // string myText = "Hello";     // String
 
     bool isCodingFun = true;
     bool isFishTasty = false;
@@ -65,21 +67,21 @@ int main() {
 
     string cars[4] = {"Opel", "BMW", "Mercedes", "Porsche"};
     cars[0] = "Audi"; 
-    int lengthOfArray = sizeof(cars) / sizeof(int); 
+    int lengthOfArray = sizeof(cars) / sizeof(cars[0]); 
     for (int i = 0; i < lengthOfArray - 1; i++)
     {
         cout << cars[i]; 
     }
     
     string food = "Pizza";  // food variable
-    string &meal = food;    // reference to food
+    // string &meal = food;    // reference to food
 
-    string food = "Pizza";
-    cout << &food; // Outputs 0x6dfed4
+    string food2 = "Pizza";
+    cout << &food2; // Outputs 0x6dfed4
 
-    string food = "Pizza";  // A food variable of type string
-    string* ptr = &food;    // A pointer variable, with the name ptr, that stores the address of food
-    newMain(); 
+    string food3 = "Pizza";  // A food variable of type string
+    // string* ptr = &food3;    // A pointer variable, with the name ptr, that stores the address of food
+    // randomFunction(); 
     return 0; 
 }
 
@@ -87,7 +89,7 @@ void myFunction(string fname, int age) {
   cout << fname << " Refsnes. " << age << " years old. \n";
 }
 
-int newMain(){
+int randomFunction(){
     myFunction("Liam", 3);
     myFunction("Jenny", 14);
     myFunction("Anja", 30);
@@ -102,7 +104,7 @@ double plusFunc(double x, double y) {
   return x + y;
 }
 
-int main() {
+int newMain() {
   int myNum1 = plusFunc(8, 5);
   double myNum2 = plusFunc(4.3, 6.26);
   cout << "Int: " << myNum1 << "\n";
@@ -122,10 +124,10 @@ class MyClass {
 };
 
 int functionToTestClass(){
-    MyClass myObject; 
-    myObject.myNum = 1; 
-    cout << myObject.myNum; 
-    myObject.functionMethod(); 
+    MyClass myObject2; 
+    myObject2.myNum = 1; 
+    cout << myObject2.myNum; 
+    myObject2.functionMethod(); 
     MyClass myObject; 
     return 0; 
 }
