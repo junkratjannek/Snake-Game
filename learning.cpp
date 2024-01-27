@@ -7,7 +7,7 @@ namespace myNameSpace {
     int zahl = 10; 
 }
 
-int main() {
+int functionName() {
     // output
     cout << "Hello World\n"; 
     // numbers 
