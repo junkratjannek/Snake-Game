@@ -24,3 +24,8 @@ Creating the game objects
 ### Game Loop:  
 Updating the positions of the game objects <br />
 Checking for collisions 
+
+<strong>3 Steps inside the gameloop: <br /></strong>
+1. Event Handling 
+2. Updating Positions 
+3. Drawing Objects

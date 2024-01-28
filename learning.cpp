@@ -137,3 +137,10 @@ public - members are accessible from outside the class
 private - members cannot be accessed (or viewed) from outside the class
 protected - members cannot be accessed from outside the class, however, they can be accessed in inherited classes. You will learn more
 */
+
+// raylib drawing: 
+
+// void DrawRectangle(int posX, int posY, int width, int height, Color Color); 
+// void DrawCircle(int centerX, int centerY, float radius, Color color); 
+// void DrawLine{int startPosX, intStartPosY, int endPosX, int endPosY, Color color};
+// void DrawPoly{Vector 2 center, int sides, float radius, float rotation, Color color};
