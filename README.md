@@ -16,6 +16,7 @@ Little snake game in C++
 11. Create name field
 12. Add leaderboard with name and score
 13. Store leaderboard for future games
+14. [For the future] 2 Player Mode
 
 ## Basic idea of how the game works 
 
