@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include <deque> 
 #include <raymath.h>
+#include "Homescreen.h"
 
 using namespace std;
 
@@ -117,6 +118,7 @@ class Game {
     Food food = Food(snake.body); 
     bool running = true; 
     int fruitsEaten = 0; 
+    bool buttonTriggered = false; 
 
     void Draw(){
         food.Draw(); 
@@ -160,6 +162,10 @@ class Game {
         
     }
 
+    void startGame(){
+        cout << "Test"; 
+    }
+
     void GameOver(){
         snake.Reset(); 
         food.position = food.generateRandomPositionForFood(snake.body);
@@ -174,6 +180,7 @@ int main () {
     InitWindow(2 * offset + cellSize*cellCount, 2 * offset + cellSize*cellCount, "Snake Game");  
     SetTargetFPS(60); 
 
+    // Homescreen homescreen = Homescreen(); 
     Game game = Game();  
 
     while (WindowShouldClose() == false)
