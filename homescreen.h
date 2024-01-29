@@ -15,36 +15,40 @@ using namespace std;
 // int offset = 75; 
 
 class Homescreen {
-
     public: 
+
+    const int screenWidth = 750; 
+    const int screenHeigth = 750; 
+    bool working = true; 
 
     Homescreen(); 
 
-    int TestMethod(){
-        
-        cout << "Hello World"; 
-        
-        return 0; 
-    }    
+    void Update(){
+        if (working){
+            cout << "Test"; 
+        } 
+    }
+
+    void Draw(){
+        cout << "Test2"; 
+    }
 
 };
 
 #endif 
 
-// const int screenWidth = 750; 
-//     const int screenHeigth = 750; 
 
-//     int drawHomeScreen(){
-//         InitWindow(screenWidth, screenHeigth, "Snake Game"); 
+    // int drawHomeScreen(){
+    // InitWindow(screenWidth, screenHeigth, "Snake Game"); 
 
-//         while (WindowShouldClose() == false){
-//             BeginDrawing(); 
+    //     while (WindowShouldClose() == false){
+    //         BeginDrawing(); 
 
-//             ClearBackground(green); 
-//             DrawText("Welcome to Snake-Game!", offset - 5, 20, 40, darkGreen); 
-//             EndDrawing(); 
-//         }
+    //         ClearBackground(green); 
+    //         DrawText("Welcome to Snake-Game!", offset - 5, 20, 40, darkGreen); 
+    //         EndDrawing(); 
+    //     }
 
-//         CloseWindow(); 
-//         return 0; 
-//     }
+    //     CloseWindow(); 
+    //     return 0; 
+    // }

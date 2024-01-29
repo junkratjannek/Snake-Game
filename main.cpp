@@ -9,6 +9,8 @@ using namespace std;
 // struct Color {red, green, blue, alpha} -> colors in raylib 
 Color darkGreen = {43, 51, 24, 255};  
 Color green = {34, 139, 34, 255};
+Color red =  {255, 0, 0, 255}; 
+Color white = {255, 255, 255, 255}; 
 typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
 
 int cellSize = 30; 
@@ -119,6 +121,7 @@ class Game {
     bool running = true; 
     int fruitsEaten = 0; 
     bool buttonTriggered = false; 
+    bool showScore = false; 
 
     void Draw(){
         food.Draw(); 
@@ -126,11 +129,13 @@ class Game {
     }
 
     void Update(){
-        if (running){
-            snake.Update(); 
-            checkColisionWithFood(); 
-            checkColisionWithWall(); 
-            checkCollisionWithBody(); 
+        if (buttonTriggered){
+            if (running){
+                snake.Update(); 
+                checkColisionWithFood(); 
+                checkColisionWithWall(); 
+                checkCollisionWithBody(); 
+            }
         }
     }
 
@@ -185,33 +190,52 @@ int main () {
 
     while (WindowShouldClose() == false)
     {
-        BeginDrawing(); 
+        if (game.buttonTriggered == false){
+            BeginDrawing(); 
+            ClearBackground(green);  
+            DrawText("Welcome to Snake Game", offset - 5, 20, 40, darkGreen); 
+            DrawText("Press ENTER to start the game", offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
+        }
 
-        if (eventTriggered(0.2)){
-            game.Update(); 
+        if (IsKeyPressed(KEY_ENTER)){
+            game.buttonTriggered = true; 
+            // game.showScore = false; 
         }
-        if((IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_W)) && game.snake.direction.y != 1){
-            game.snake.direction = {0, -1}; 
-            game.running = true; 
-        }
-        if ((IsKeyPressed(KEY_DOWN) || IsKeyPressed(KEY_S)) && game.snake.direction.y != -1){
-            game.snake.direction = {0, 1}; 
-            game.running = true; 
-        }
-        if ((IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A)) && game.snake.direction.x != 1){
-            game.snake.direction = {-1, 0};
-            game.running = true; 
-        }
-        if ((IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D)) && game.snake.direction.x != -1){
-            game.snake.direction = {1, 0}; 
-            game.running = true; 
+
+            BeginDrawing(); 
+
+        if (game.buttonTriggered == true){
+            if (eventTriggered(0.2)){
+                game.Update(); 
+            }
+            if((IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_W)) && game.snake.direction.y != 1){
+                game.snake.direction = {0, -1}; 
+                game.running = true; 
+            }
+            if ((IsKeyPressed(KEY_DOWN) || IsKeyPressed(KEY_S)) && game.snake.direction.y != -1){
+                game.snake.direction = {0, 1}; 
+                game.running = true; 
+            }
+            if ((IsKeyPressed(KEY_LEFT) || IsKeyPressed(KEY_A)) && game.snake.direction.x != 1){
+                game.snake.direction = {-1, 0};
+                game.running = true; 
+            }
+            if ((IsKeyPressed(KEY_RIGHT) || IsKeyPressed(KEY_D)) && game.snake.direction.x != -1){
+                game.snake.direction = {1, 0}; 
+                game.running = true; 
+            }
+            if (IsKeyPressed(KEY_SPACE)){
+                cout << "Exiting Game"; 
+                game.buttonTriggered = false; 
+                game.GameOver(); 
+            }   
+            
+            ClearBackground(green); 
+            DrawRectangleLinesEx(Rectangle{(float)offset - 5, (float)offset - 5, (float)cellSize * cellCount + 10, (float)cellSize * cellCount + 10}, 5, darkGreen); 
+            DrawText("Snake Game", offset - 5, 20, 40, darkGreen); 
+            DrawText(TextFormat("Score: %i", game.fruitsEaten), offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
+            game.Draw(); 
         }   
-        
-        ClearBackground(green); 
-        DrawRectangleLinesEx(Rectangle{(float)offset - 5, (float)offset - 5, (float)cellSize * cellCount + 10, (float)cellSize * cellCount + 10}, 5, darkGreen); 
-        DrawText("Snake Game", offset - 5, 20, 40, darkGreen); 
-        DrawText(TextFormat("Score: %i", game.fruitsEaten), offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);   
-        game.Draw(); 
         EndDrawing(); 
     }
 
