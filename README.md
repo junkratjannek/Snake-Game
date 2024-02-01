@@ -17,6 +17,11 @@ Little snake game in C++
 12. Add leaderboard with name and score
 13. Store leaderboard for future games
 14. [For the future] 2 Player Mode
+15. Adding sounds
+16. Bonus Item: 
+    16a. Banane -> macht die Schlange um 2 Einheiten größer
+    16b. Burger -> ist nur für eine bestimmte Zeit sichtbar und sorgt dafür, dass man um 2 Einheiten kleiner <br /> wird, ohne, dass der Score verringert wird. 
+    16c. Steine -> fährt man dagegen, wird das Spiel abgebrochen 
 
 ## Basic idea of how the game works 
 
@@ -32,3 +37,6 @@ Checking for collisions
 1. Event Handling 
 2. Updating Positions 
 3. Drawing Objects
+
+### Sounds: 
+https://mixkit.co/free-sound-effects/game/ 

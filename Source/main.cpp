@@ -73,6 +73,13 @@ class Snake {
     }
 };
 
+class Rock {
+    public: 
+
+    cout << "Test"; 
+
+}
+
 class Food {
     
     public: 
@@ -96,11 +103,27 @@ class Food {
     }
 
     Food(deque<Vector2> snakeBody){
-        Image image = LoadImage("images/apple.png");
-        ImageResize(&image, 30, 30);
-        texture = LoadTextureFromImage(image); 
-        UnloadImage(image); 
+        Image imageApple = LoadImage("images/apple.png");
+        ImageResize(&imageApple, 30, 30);
+        texture = LoadTextureFromImage(imageApple); 
+        UnloadImage(imageApple); 
         position = generateRandomPositionForFood(snakeBody); 
+    }
+
+    Banana(deque<Vector2> snakeBody){
+        Image imageBanana = LoadImage("images/banana.png"); 
+        ImageResize(&imageBanana, 30, 30); 
+        texture = LoadTextureFromImage(imageBanana); 
+        UnloadImage(imageBanana); 
+        position = generateRandomPositionForFood(snakeBody);  
+    }
+
+    Stone(deque<Vector2> snakeBody){
+        Image imageRock = LoadImage("images/rock.png"); 
+        ImageResize(&imageRock, 30, 30); 
+        texture = LoadTextureFromImage(imageRock); 
+        UnloadImage(imageRock); 
+        position = generateRandomPositionForFood(imageRock); 
     }
 
     ~Food(){
@@ -123,12 +146,14 @@ class Game {
     bool buttonTriggered = false; 
     bool showScore = false; 
 
-    void Draw(){
+    void Draw()
+    {
         food.Draw(); 
         snake.Draw(); 
     }
 
-    void Update(){
+    void Update()
+    {
         if (buttonTriggered){
             if (running){
                 snake.Update(); 
@@ -139,8 +164,27 @@ class Game {
         }
     }
 
-    void checkColisionWithFood(){
+    void checkColisionWithApple()
+    {
         if (Vector2Equals(snake.body[0], food.position)){
+            food.position = food.generateRandomPositionForFood(snake.body);
+            snake.addSegment = true; 
+            fruitsEaten ++; 
+        }
+    }
+
+    void checkColisionWithBanana()
+    {
+        if (Vector2Equals(snake.body[0], food.position)){
+            food.position = food.generateRandomPositionForFood(snake.body);
+            snake.addSegment = true; 
+            fruitsEaten ++; 
+        }
+    }
+
+    void CheckColisionWithRock()
+    {
+        if (Vector2Equals(snake.body[0], stone.position)){
             food.position = food.generateRandomPositionForFood(snake.body);
             snake.addSegment = true; 
             fruitsEaten ++; 
