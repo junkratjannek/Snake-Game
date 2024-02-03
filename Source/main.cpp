@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include <deque> 
 #include <raymath.h>
-#include "Homescreen.h"
+// #include "Homescreen.h"
 
 using namespace std;
 
@@ -73,13 +73,6 @@ class Snake {
     }
 };
 
-class Rock {
-    public: 
-
-    cout << "Test"; 
-
-}
-
 class Food {
     
     public: 
@@ -110,21 +103,21 @@ class Food {
         position = generateRandomPositionForFood(snakeBody); 
     }
 
-    Banana(deque<Vector2> snakeBody){
-        Image imageBanana = LoadImage("images/banana.png"); 
-        ImageResize(&imageBanana, 30, 30); 
-        texture = LoadTextureFromImage(imageBanana); 
-        UnloadImage(imageBanana); 
-        position = generateRandomPositionForFood(snakeBody);  
-    }
+    // Banana(deque<Vector2> snakeBody){
+    //     Image imageBanana = LoadImage("images/banana.png"); 
+    //     ImageResize(&imageBanana, 30, 30); 
+    //     texture = LoadTextureFromImage(imageBanana); 
+    //     UnloadImage(imageBanana); 
+    //     position = generateRandomPositionForFood(snakeBody);  
+    // }
 
-    Stone(deque<Vector2> snakeBody){
-        Image imageRock = LoadImage("images/rock.png"); 
-        ImageResize(&imageRock, 30, 30); 
-        texture = LoadTextureFromImage(imageRock); 
-        UnloadImage(imageRock); 
-        position = generateRandomPositionForFood(imageRock); 
-    }
+    // Stone(deque<Vector2> snakeBody){
+    //     Image imageRock = LoadImage("images/rock.png"); 
+    //     ImageResize(&imageRock, 30, 30); 
+    //     texture = LoadTextureFromImage(imageRock); 
+    //     UnloadImage(imageRock); 
+    //     position = generateRandomPositionForFood(imageRock); 
+    // }
 
     ~Food(){
         UnloadTexture(texture); 
@@ -145,6 +138,22 @@ class Game {
     int fruitsEaten = 0; 
     bool buttonTriggered = false; 
     bool showScore = false; 
+    Sound eatFood; 
+    Sound wallSound;
+
+    Game()
+    {
+        InitAudioDevice(); 
+        wallSound = LoadSound("sounds/wall.mp3"); 
+        // collectFood = LoadSound("sounds/eatApple.mp3"); 
+    }
+
+    ~Game()
+    {
+        // UnloadSound(collectFood); 
+        UnloadSound(wallSound); 
+        CloseAudioDevice(); 
+    }
 
     void Draw()
     {
@@ -164,7 +173,7 @@ class Game {
         }
     }
 
-    void checkColisionWithApple()
+    void checkColisionWithFood()
     {
         if (Vector2Equals(snake.body[0], food.position)){
             food.position = food.generateRandomPositionForFood(snake.body);
@@ -173,27 +182,27 @@ class Game {
         }
     }
 
-    void checkColisionWithBanana()
-    {
-        if (Vector2Equals(snake.body[0], food.position)){
-            food.position = food.generateRandomPositionForFood(snake.body);
-            snake.addSegment = true; 
-            fruitsEaten ++; 
-        }
-    }
+    // void checkColisionWithBanana()
+    // {
+    //     if (Vector2Equals(snake.body[0], food.position)){
+    //         food.position = food.generateRandomPositionForFood(snake.body);
+    //         snake.addSegment = true; 
+    //         fruitsEaten ++; 
+    //     }
+    // }
 
-    void CheckColisionWithRock()
-    {
-        if (Vector2Equals(snake.body[0], stone.position)){
-            food.position = food.generateRandomPositionForFood(snake.body);
-            snake.addSegment = true; 
-            fruitsEaten ++; 
-        }
-    }
+    // void CheckColisionWithRock()
+    // {
+    //     if (Vector2Equals(snake.body[0], stone.position)){
+    //         food.position = food.generateRandomPositionForFood(snake.body);
+    //         snake.addSegment = true; 
+    //         fruitsEaten ++; 
+    //     }
+    // }
 
     void checkColisionWithWall(){
-        if (snake.body[0].x == cellCount || snake.body[0].x == -1){
-            GameOver(); 
+        if (snake.body[0].x == cellCount || snake.body[0].x == -1){ 
+            GameOver();
         }
         if (snake.body[0].y == cellCount || snake.body[0].y == -1){
             GameOver(); 
@@ -220,6 +229,7 @@ class Game {
         food.position = food.generateRandomPositionForFood(snake.body);
         running = false;  
         fruitsEaten = 0; 
+        PlaySound(wallSound); 
         // TODO Implement Window, that works as a highscore displayer and start screen  
     }
 };
