@@ -2,7 +2,6 @@
 #include <raylib.h>
 #include <deque> 
 #include <raymath.h>
-// #include "Homescreen.h"
 
 using namespace std;
 
@@ -247,11 +246,11 @@ int main () {
         if (game.buttonTriggered == false){
             BeginDrawing(); 
             ClearBackground(green);  
-            DrawText("Welcome to Snake Game", offset - 5, 20, 40, darkGreen); 
+            DrawText("Welcome to Snake Game", offset - 50, 20, 80, darkGreen); 
             DrawText("Press ENTER to start the game", offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
         }
 
-        if (IsKeyPressed(KEY_ENTER)){
+        if (IsKeyPressed(KEY_SPACE)){
             game.buttonTriggered = true; 
             // game.showScore = false; 
         }
@@ -279,7 +278,6 @@ int main () {
                 game.running = true; 
             }
             if (IsKeyPressed(KEY_SPACE)){
-                cout << "Exiting Game"; 
                 game.buttonTriggered = false; 
                 game.GameOver(); 
             }   

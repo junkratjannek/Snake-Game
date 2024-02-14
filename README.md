@@ -55,3 +55,8 @@ Hinweise bei Klassen:
 
 1. MyClass(); -> Konstruktor (beim Erstellen)
 2. ~MyClass(); -> Desktruktor (beim Zerstören der Klasse)
+
+Hinweise bei Header File: 
+Sie enthalten nur Deklarationen für Klassen 
+
+Hinweise für CPP Files mit den Klassen drin: Method Definition and Implementation 
