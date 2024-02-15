@@ -95,7 +95,7 @@ class Food {
     }
 
     Food(deque<Vector2> snakeBody){
-        Image imageApple = LoadImage("images/apple.png");
+        Image imageApple = LoadImage("images/banana.png");
         ImageResize(&imageApple, 30, 30);
         texture = LoadTextureFromImage(imageApple); 
         UnloadImage(imageApple); 
@@ -181,24 +181,6 @@ class Game {
         }
     }
 
-    // void checkColisionWithBanana()
-    // {
-    //     if (Vector2Equals(snake.body[0], food.position)){
-    //         food.position = food.generateRandomPositionForFood(snake.body);
-    //         snake.addSegment = true; 
-    //         fruitsEaten ++; 
-    //     }
-    // }
-
-    // void CheckColisionWithRock()
-    // {
-    //     if (Vector2Equals(snake.body[0], stone.position)){
-    //         food.position = food.generateRandomPositionForFood(snake.body);
-    //         snake.addSegment = true; 
-    //         fruitsEaten ++; 
-    //     }
-    // }
-
     void checkColisionWithWall(){
         if (snake.body[0].x == cellCount || snake.body[0].x == -1){ 
             GameOver();
@@ -243,19 +225,19 @@ int main () {
 
     while (WindowShouldClose() == false)
     {
-        if (game.buttonTriggered == false){
-            BeginDrawing(); 
-            ClearBackground(green);  
-            DrawText("Welcome to Snake Game", offset - 50, 20, 80, darkGreen); 
-            DrawText("Press ENTER to start the game", offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
-        }
+        // if (game.buttonTriggered == false){
+        //     BeginDrawing(); 
+        //     ClearBackground(green);  
+        //     DrawText("Welcome to Snake Game", offset - 50, 20, 80, darkGreen); 
+        //     DrawText("Press ENTER to start the game", offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
+        // }
 
-        if (IsKeyPressed(KEY_SPACE)){
-            game.buttonTriggered = true; 
-            // game.showScore = false; 
-        }
+        // if (IsKeyPressed(KEY_SPACE)){
+        //     game.buttonTriggered = true; 
+        //     // game.showScore = false; 
+        // }
 
-            BeginDrawing(); 
+        BeginDrawing(); 
 
         if (game.buttonTriggered == true){
             if (eventTriggered(0.2)){
