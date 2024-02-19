@@ -11,18 +11,18 @@ Little snake game in C++
 5. Making the snake eat the food ✅
 6. Grow the snake when food ✅
 7. Checking for collision with frame or tail ✅
-8. Keeping the score
-9. Adding start window
+8. Keeping the score 
+9. Adding start window ✅
 10. Adding Start and Score Buttons on Homescreen
 11. Create name field
 12. Add leaderboard with name and score
 13. Store leaderboard for future games
 14. [For the future] 2 Player Mode
-15. Adding sounds
-16. Bonus Item:
-    16a. Banane -> macht die Schlange um 2 Einheiten größer
+15. Adding sounds ✅
+16. Bonus Items (just ideas):
+    16a. Banane -> macht die Schlange um 2 Einheiten größer ✅
     16b. Burger -> ist nur für eine bestimmte Zeit sichtbar und sorgt dafür, dass man um 2 Einheiten kleiner <br /> wird, ohne, dass der Score verringert wird.
-    16c. Steine -> fährt man dagegen, wird das Spiel abgebrochen
+    16c. Steine -> fährt man dagegen, wird das Spiel abgebrochen ✅
 
 ## Basic idea of how the game works
 
